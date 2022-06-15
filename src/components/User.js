@@ -8,7 +8,9 @@ class User extends React.Component {
     }
 
     componentDidMount() {
-        this.props.setUser()
+        if(!this.props.currentUser){
+            this.props.setUser()
+        }
     }
     
     render() {
