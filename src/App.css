@@ -2,6 +2,7 @@
   margin: 0 auto;
   padding: 0;
   max-width: 100%;
+  /* border: 1px solid red; */
 }
 
 .App {
@@ -11,4 +12,23 @@
 .header {
   background-color: rgb(225, 232, 238);
   padding: 2%
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-container img {
+  height: 50%;
+  width: 20%;
+  cursor: pointer;
+}
+
+.user-info h3 {
+  cursor: pointer;
+}
+
+.user-info p:nth-of-type(2) {
+  cursor: pointer;
 }
