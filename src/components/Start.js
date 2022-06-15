@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 
 class Start extends React.Component {
     render() {
-        console.log(this.props)
         return(
             <>
             {this.props.currentUser ? 
