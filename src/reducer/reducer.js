@@ -2,7 +2,6 @@ import * as types from '../actions/types'
 
 const initialState = {
     currentUser: '',
-    haveUser: false
 }
 
 function reducer(state = initialState, action) {
@@ -11,7 +10,6 @@ function reducer(state = initialState, action) {
             return({
                 ...state,
                 currentUser: action.payload,
-                haveUser: true
             });
         case types.CHANGE_SECTION:
             return({

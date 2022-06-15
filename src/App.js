@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import { setUser, changePart, switchGender } from './actions/actions'
 import './App.css';
 import Title from './components/Title'
 import User from './components/User'
+import { Route, Link, Switch } from 'react-router-dom'
+import Start from './components/Start';
 
 function App(props) {
-
-  const handleRandom = () => {
-    props.setUser()
-  }
 
   const handlePart = (part) => {
     props.changePart(part)
@@ -22,8 +20,18 @@ function App(props) {
   return (
       <div className="App">
         <Title />
-        {!props.haveUser && <button onClick={handleRandom}>create your character</button>}
-        {props.currentUser && <User currentUser={props.currentUser} handlePart={handlePart} sw={sw}/>}
+
+        <Switch>
+          <Route path='/create'>
+            <User setUser={props.setUser} currentUser={props.currentUser} handlePart={handlePart} sw={sw}/>
+          </Route>
+          <Route path="/questStart">
+            <Start currentUser={props.currentUser}/>
+          </Route>
+          <Route exact path='/'> 
+            <Link to="/create" className='user-button'>create your character</Link>
+          </Route>
+        </Switch>
       </div>
   );
 }

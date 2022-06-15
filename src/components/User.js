@@ -1,18 +1,23 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class User extends React.Component {
 
     handleChange = (part) => {
         this.props.handlePart(part)
     }
+
+    componentDidMount() {
+        this.props.setUser()
+    }
     
     render() {
-        console.log(this.props)
         const { currentUser } = this.props
         const cU = currentUser
         return(
-            <section>
+            <section className='user'>
                 <p>the person you will be playing as is:</p>
+                {cU === '' ? <h2>loading...</h2> :
                 <div className='user-container'>
                     <img src={cU.picture.large} onClick={()=> this.handleChange('picture')}/>
                     <div className='user-info'>
@@ -30,7 +35,9 @@ class User extends React.Component {
                         <p>state: {cU.location.state}</p>
                     </div>
                 </div>
-                    <h6>*hint: you can your change picture, name, or gender!</h6>
+                }
+                <h6>*hint: you can change your picture, name, or gender!</h6>
+                    <Link to="/questStart">Start your quest!</Link>
             </section>
         )
     }
